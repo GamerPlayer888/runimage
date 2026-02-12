@@ -3,8 +3,8 @@ name: ⚙️ Continuous bootstrap 📦
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * 0" #At 00:00 UTC on Sunday every Week
-
+    - cron:  '0 0 * * 5'
+    
 jobs:
   bootstrap_and_release:
     name: runimage-bootstrap
@@ -17,6 +17,17 @@ jobs:
         with:
           path: main
           filter: "blob:none"
+          
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+        with:
+           tool-cache: false
+           android: true
+           dotnet: true
+           haskell: true
+           large-packages: true
+           docker-images: true
+           swap-storage: true
 
       - name: Install deps
         run: |
@@ -31,21 +42,14 @@ jobs:
             set -x ; set -e
             mkdir -p release && cd release||exit 1
 
-            # x86_64
             ../main/rim-bootstrap
             zsyncmake runimage-x86_64
-
-            # aarch64
-            TARGETARCH=arm64 ../main/rim-bootstrap
-            zsyncmake runimage-aarch64
 
             rm -f runimage
 
             echo "\
             -----------------------------------------------------------------------------------------------------------------------------
-            * [runimage-x86_64](https://github.com/VHSgunzo/runimage/releases/download/continuous/runimage-x86_64) | [pkg_list-x86_64.txt](https://github.com/VHSgunzo/runimage/releases/download/continuous/pkg_list-x86_64.txt)
-            -----------------------------------------------------------------------------------------------------------------------------
-            * [runimage-aarch64](https://github.com/VHSgunzo/runimage/releases/download/continuous/runimage-aarch64) | [pkg_list-aarch64.txt](https://github.com/VHSgunzo/runimage/releases/download/continuous/pkg_list-aarch64.txt)
+            * [runimage-x86_64](https://github.com/GamerPlayer888/runimage/releases/download/continuous/runimage-x86_64) | [pkg_list-x86_64.txt](https://github.com/GamerPlayer888/runimage/releases/download/continuous/pkg_list-x86_64.txt)
             -----------------------------------------------------------------------------------------------------------------------------
             " > ../RELEASE_NOTE.md
 
