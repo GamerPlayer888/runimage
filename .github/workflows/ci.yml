@@ -17,6 +17,17 @@ jobs:
         with:
           path: main
           filter: "blob:none"
+          
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+        with:
+           tool-cache: false
+           android: true
+           dotnet: true
+           haskell: true
+           large-packages: true
+           docker-images: true
+           swap-storage: true
 
       - name: Install deps
         run: |
@@ -78,6 +89,8 @@ jobs:
             	rtorrent imv tmux leptonica zxing-cpp nautilus fish firefox passff-host pass-otp
             	yt-dlp minizip jre17-openjdk gnome-themes-extra ffmpegthumbnailer file-roller
             	gnome-network-displays obsidian scrcpy
+              rare cemu-bin eden-preview-bin gale-bin shadps4-pre-release-bin lsfg-vk-git
+              obs-vkcapture-git vesktop-bin materialgram-bin jdownloader2 pixieditor-bin
             "
             ../main/rim-bootstrap $PACKAGES
             zsyncmake runimage-x86_64
