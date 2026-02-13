@@ -189,7 +189,7 @@ PACKAGES=(
 	mpv blender tesseract tesseract-data-eng kdenlive
 	rtorrent imv tmux leptonica zxing-cpp nautilus fish firefox passff-host pass-otp
 	yt-dlp minizip jre17-openjdk gnome-themes-extra ffmpegthumbnailer file-roller
-	gnome-network-displays obsidian scrcpy
+	gnome-network-displays obsidian scrcpy paru
 )
 
 AUR_PACKAGES=(
@@ -202,16 +202,8 @@ AUR_PACKAGES=(
 echo '== install additional packages'
 ./RunDir/Run pacman --noconfirm -Sy $PACKAGES
 
-./RunDir/Run pacman --noconfirm -S --needed paru base-devel git
-
-./RunDir/Run useradd -m builder
-./RunDir/Run sh -c "echo 'builder ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
-./RunDir/Run sh -c "chown -R builder:builder /home/builder"
-
 echo '== install AUR packages'
-./RunDir/Run su - builder -c "paru -Syu --noconfirm --skipreview --needed $AUR_PKGS"
-
-./RunDir/Run userdel -r builder
+./RunDir/Run paru -Sy --noconfirm --skipreview --needed $AUR_PKGS
 
 echo '== shrink backup files, docs, man, locales, package cache, python cache, strip debug symbols'
 ./RunDir/Run rim-shrink --back --docs --locales --pkgcache --pycache --strip
