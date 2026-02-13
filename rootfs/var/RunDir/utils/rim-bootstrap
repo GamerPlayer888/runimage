@@ -189,10 +189,10 @@ PACKAGES=(
 	mpv blender tesseract tesseract-data-eng kdenlive
 	rtorrent imv tmux leptonica zxing-cpp nautilus fish firefox passff-host pass-otp
 	yt-dlp minizip jre17-openjdk gnome-themes-extra ffmpegthumbnailer file-roller
-	gnome-network-displays obsidian scrcpy paru
+	gnome-network-displays obsidian scrcpy chaotic-aur/paru
 )
 
-AUR_PACKAGES=(
+AUR_PKGS=(
   	# gaming
   	rare cemu-bin eden-preview-bin gale-bin shadps4-pre-release-bin lsfg-vk-git hytale-launcher-bin
     # extra
