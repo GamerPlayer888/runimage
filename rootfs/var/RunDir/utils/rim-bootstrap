@@ -203,10 +203,10 @@ echo '== install paru AUR helper'
 ./RunDir/Run pacman --noconfirm -S chaotic-aur/paru base-devel git
 
 echo '== install additional packages'
-./RunDir/Run paru -S --noconfirm --removemake --needed $PACKAGES
+./RunDir/Run paru -S --noconfirm --removemake --needed "${PACKAGES[@]}"
 
 echo '== install AUR packages'
-./RunDir/Run paru -S --noconfirm --removemake --needed $AUR_PKGS
+./RunDir/Run paru -S --noconfirm --removemake --needed "${AUR_PKGS[@]}"
 
 echo '== shrink backup files, docs, man, locales, package cache, python cache, strip debug symbols'
 ./RunDir/Run rim-shrink --back --docs --locales --pkgcache --pycache --strip
