@@ -189,7 +189,7 @@ PACKAGES=(
 	mpv blender tesseract tesseract-data-eng kdenlive
 	rtorrent imv tmux leptonica zxing-cpp nautilus fish firefox passff-host pass-otp
 	yt-dlp minizip jre17-openjdk gnome-themes-extra ffmpegthumbnailer file-roller
-	gnome-network-displays obsidian scrcpy chaotic-aur/paru
+	gnome-network-displays obsidian scrcpy
 )
 
 AUR_PKGS=(
@@ -199,11 +199,20 @@ AUR_PKGS=(
     obs-vkcapture-git vesktop-bin materialgram-bin jdownloader2 pixieditor-bin
 )
 
+echo '== install paru AUR helper'
+./RunDir/Run pacman --noconfirm -S chaotic-aur/paru base-devel git
+./RunDir/Run useradd -m -G wheel aur
+echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" >> >> rootfs/etc/sudoers
+
 echo '== install additional packages'
-./RunDir/Run pacman --noconfirm -Sy $PACKAGES
+./RunDir/Run su aur -c "paru -S --noconfirm --removemake --needed $PACKAGES"
 
 echo '== install AUR packages'
-./RunDir/Run paru -Sy --noconfirm --skipreview --needed $AUR_PKGS
+./RunDir/Run su aur -c "paru -S --noconfirm --removemake --needed $AUR_PKGS"
+
+echo '== clean up temp user'
+./RunDir/Run userdel -r aur
+sed -i '/aur/d' rootfs/etc/sudoers
 
 echo '== shrink backup files, docs, man, locales, package cache, python cache, strip debug symbols'
 ./RunDir/Run rim-shrink --back --docs --locales --pkgcache --pycache --strip
