@@ -202,7 +202,7 @@ AUR_PKGS=(
 echo '== install paru AUR helper'
 ./RunDir/Run pacman --noconfirm -S chaotic-aur/paru base-devel git
 ./RunDir/Run useradd -m -G wheel aur
-echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" >> >> rootfs/etc/sudoers
+echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" >> rootfs/etc/sudoers
 
 echo '== install additional packages'
 ./RunDir/Run su aur -c "paru -S --noconfirm --removemake --needed $PACKAGES"
