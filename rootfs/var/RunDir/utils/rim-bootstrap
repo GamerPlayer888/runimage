@@ -199,15 +199,11 @@ AUR_PKGS=(
     obs-vkcapture-git vesktop-bin materialgram-bin pixieditor-bin
 )
 
-echo '== create temp account for AUR helper'
-./RunDir/Run useradd -m -G wheel aur
-echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" >> rootfs/etc/sudoers
-
 echo '== install additional packages'
 ./RunDir/Run pacman -S --noconfirm --needed "${PACKAGES[@]}"
 
 echo '== install AUR packages'
-./RunDir/Run su aur -c "yay -S --noconfirm --removemake --needed ${AUR_PKGS[@]}"
+env -u RIM_ROOT RIM_TMP_HOME=1 ./RunDir/Run yay -S --noconfirm --removemake --needed "${AUR_PKGS[@]}"
 
 echo '== shrink backup files, docs, man, locales, package cache, python cache, strip debug symbols'
 ./RunDir/Run rim-shrink --back --docs --locales --pkgcache --pycache --strip
