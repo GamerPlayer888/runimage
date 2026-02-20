@@ -55,7 +55,8 @@ jobs:
       - name: Split files
         run: |
            mkdir splitted
-           split -b 1500M runimage-x86_64 splitted/runimage-x86_64.
+           split -b 1500M release/runimage-x86_64 splitted/runimage-x86_64.
+           mv release/runimage-x86_64.zsync splitted/runimage-x86_64.zsync
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
