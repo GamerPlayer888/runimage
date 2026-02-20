@@ -52,7 +52,10 @@ jobs:
             * [runimage-x86_64](https://github.com/GamerPlayer888/runimage/releases/download/continuous/runimage-x86_64) | [pkg_list-x86_64.txt](https://github.com/GamerPlayer888/runimage/releases/download/continuous/pkg_list-x86_64.txt)
             -----------------------------------------------------------------------------------------------------------------------------
             " > ../RELEASE_NOTE.md
-
+      - name: Split files
+        run: |
+           mkdir splitted
+           split -b 1500M runimage-x86_64 splitted/runimage-x86_64.
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
@@ -60,4 +63,4 @@ jobs:
           prerelease: false
           draft: false
           body_path: "RELEASE_NOTE.md"
-          files: release/*
+          files: splitted/*
