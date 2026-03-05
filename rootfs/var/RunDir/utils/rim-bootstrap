@@ -194,7 +194,7 @@ PACKAGES=(
 
 AUR_PKGS=(
   	# gaming
-  	rare cemu-bin eden-preview-bin gale-bin shadps4-pre-release-bin lsfg-vk-git protonplus hyprism-bin 
+  	rare cemu-bin eden-preview-bin gale-bin shadps4-pre-release-bin lsfg-vk-git protonup-qt hyprism-bin 
     # extra
     obs-vkcapture-git pixieditor-bin jdownloader2 linux-wifi-hotspot-bin vesktop-bin materialgram-bin
 )
