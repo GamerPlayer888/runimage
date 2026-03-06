@@ -189,7 +189,7 @@ PACKAGES=(
 	mpv blender tesseract tesseract-data-eng kdenlive
 	rtorrent imv tmux leptonica zxing-cpp nautilus fish firefox passff-host pass-otp
 	yt-dlp minizip jre17-openjdk gnome-themes-extra ffmpegthumbnailer file-roller
-	gnome-network-displays obsidian scrcpy dnsmasq
+	gnome-network-displays obsidian scrcpy dnsmasq skanpage
 )
 
 AUR_PKGS=(
