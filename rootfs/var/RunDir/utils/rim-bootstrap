@@ -188,7 +188,7 @@ PACKAGES=(
 	adobe-source-han-serif-otc-fonts adobe-source-han-serif-tw-fonts 
 	mpv blender tesseract tesseract-data-eng kdenlive
 	rtorrent imv tmux leptonica zxing-cpp nautilus fish firefox passff-host pass-otp
-	yt-dlp minizip jre17-openjdk gnome-themes-extra ffmpegthumbnailer file-roller
+	yt-dlp minizip jre17-openjdk gnome-themes-extra ffmpegthumbnailer nautilus
 	gnome-network-displays obsidian scrcpy dnsmasq skanpage
 )
 
