@@ -39,7 +39,7 @@ sysdrm=(
 )
 if [[ ! -n "$TARGETARCH" && "$SYS_ARCH" == 'x86_64' ]]
     then
-        dimg_repo='archlinux:base'
+        dimg_repo='cachyos/cachyos-v3:latest'
         sysdrm+=(systemd-sysvcompat)
     else
         dimg_repo='lopsided/archlinux:latest'
@@ -60,16 +60,6 @@ echo '== update rootfs'
 ./RunDir/Run pacman -Sy archlinux-keyring --needed --noconfirm
 ./RunDir/Run pacman --noconfirm -U "https://github.com/runimage/repo/releases/download/$ROOTFS_ARCH/runimage-mirrorlist.pkg.tar.zst"
 yes|./RunDir/Run pacman -Syu --overwrite '*'
-
-echo '== add BlackArch repo'
-if [ ! -x '/tmp/strap.sh' ]
-    then
-        curl -L https://blackarch.org/strap.sh -o /tmp/strap.sh
-        sed -i '/blackarch-officials/d' /tmp/strap.sh
-        chmod +x /tmp/strap.sh
-fi
-./RunDir/Run /tmp/strap.sh
-./RunDir/Run pacman --noconfirm -S blackarch-keyring --overwrite '*'
 
 if [ "$ROOTFS_ARCH" == 'x86_64' ]
     then
