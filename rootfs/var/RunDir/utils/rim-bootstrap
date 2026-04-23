@@ -188,14 +188,14 @@ PACKAGES=(
 	mpv blender tesseract tesseract-data-eng kdenlive
 	rtorrent imv tmux leptonica zxing-cpp nautilus fish firefox passff-host pass-otp
 	yt-dlp jre17-openjdk gnome-themes-extra ffmpegthumbnailer
-	gnome-network-displays obsidian scrcpy dnsmasq skanpage
+	gnome-network-displays obsidian scrcpy dnsmasq skanpage eden-git obs-vkcapture-git lsfg-vk-git
 )
 
 AUR_PKGS=(
   	# gaming
-  	rare cemu-bin gale-bin shadps4-pre-release-bin lsfg-vk-git protonup-qt hyprism-bin eden-git
+  	rare cemu-bin gale-bin shadps4-pre-release-bin protonup-qt hyprism-bin
     # extra
-    obs-vkcapture-git pixieditor-bin jdownloader2 linux-wifi-hotspot-bin vesktop-bin materialgram-bin jetbrains-toolbox
+    pixieditor-bin jdownloader2 linux-wifi-hotspot-bin vesktop-bin materialgram-bin jetbrains-toolbox
 )
 
 echo '== install additional packages'
