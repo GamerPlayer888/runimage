@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-set -e
+#!/usr/bin/env bashset -e
 shopt -s extglob
 SYS_ARCH="$(uname -m)"
 
@@ -195,7 +194,7 @@ AUR_PKGS=(
   	# gaming
   	rare cemu-bin gale-bin shadps4-pre-release-bin protonup-qt hyprism-bin
     # extra
-    pixieditor-bin jdownloader2 linux-wifi-hotspot-bin vesktop-bin materialgram-bin jetbrains-toolbox
+    pixieditor-bin jdownloader2 linux-wifi-hotspot-bin vesktop-bin materialgram-bin jetbrains-toolbox zsync2
 )
 
 echo '== install additional packages'
