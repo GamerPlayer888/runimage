@@ -60,7 +60,7 @@ jobs:
            zsyncmake runimage-x86_64
 
       - name: Setup ORAS
-        uses: oras-project/setup-oras-action@v1
+        uses: oras-project/setup-oras@v2.0.1
         
       - name: Login to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | oras login ghcr.io -u ${{ github.actor }} --password-stdin
