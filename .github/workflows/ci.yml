@@ -31,7 +31,7 @@ jobs:
 
       - name: Install deps
         run: |
-          sudo sh -c 'apt update && apt install qemu-user-static zsync -y'
+          sudo sh -c 'apt update && apt install qemu-user-static -y'
           sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns <<<0
           docker pull tonistiigi/binfmt:latest
           docker run --privileged --rm tonistiigi/binfmt --uninstall qemu-*
@@ -51,14 +51,12 @@ jobs:
             * [runimage-x86_64](https://github.com/GamerPlayer888/runimage/releases/download/continuous/runimage-x86_64) | [pkg_list-x86_64.txt](https://github.com/GamerPlayer888/runimage/releases/download/continuous/pkg_list-x86_64.txt)
             -----------------------------------------------------------------------------------------------------------------------------
             " > ../RELEASE_NOTE.md
+            
       - name: Split files
         run: |
            mkdir splitted
            split -b 1500M release/runimage-x86_64 splitted/runimage-x86_64.
-           cd splitted
-           for chunk in runimage-x86_64.*; do
-              zsyncmake "$chunk"
-            done
+
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
